@@ -1,17 +1,46 @@
-# GTA V SHVDN Template
-This repositoy can be used as a template to get started with a GTA V Script using [Community Script Hook V .NET](https://github.com/crosire/scripthookvdotnet).
-## Requirements
-- Make sure that [Community Script Hook V .NET](https://github.com/crosire/scripthookvdotnet) is installed as described [here](https://github.com/crosire/scripthookvdotnet).
-## Usage
-Simply change the project name in these files to your desired project name:
+# IceWater
+GTA V mod that damages the player for swimming in cold water
+An extremely simple script that damages the player for swimming during cold weathers.
 
-- root directory name
-- project file names
-- ``.csproj`` ``RootNamespace`` Attribute
+<b>Features:</b>
 
-### Post Build Event
+-Damage every two seconds (Configurable)
+-Half damage for standing in water
+-Full damage for swimming
+-Double damage for being underwater
+-Damage worsens as weather worsens
+-Camera Shakes when taking damage
+-Camera VFX while in freezing water
+-Configurable damage multiplier
 
-After creating a build these files will be copied to your ``scripts`` directory in the GTA V installation path. You need to change the path according to your installation path in the `.csproj` file under `GTAVDirectory` Property. This can be used to quickly reload your scripts while developing. Just use the `Reload()` function in the SHVDN console (`F4`) inside of GTA V.
-You can paste all necessary data into the Output folder so it will also be transferred to your `scripts` directory after each build. In the case you want to exclude some types of files you could add them to the `postbuildmoveignore.txt` file.
+<b>Damage Chart:</b>:
+Assuming DamageMultiplier = 1. Damage applies every two seconds by default.
+========================================================
+[          ][SnowOnGround/Light Snow][Normal Snow/Xmas][Blizzard]
+[Standing  ][           3           ][          4     ][    5   ]
+[In Water  ][           6           ][          8     ][    10  ]
+[Underwater][           12          ][          16    ][    20  ]
+=========================================================
+<b>Config Options</b>
+EnableCameraShake - Whether or not to shake the camera when taking damage. On by default.
+EnableVFX - Whether or not to enable the white screen effect when in freezing water. On by default.
+EnableWhileSnowOnGround - If the ground is covered in snow, any weather will damage the player while swimming. On by default.
+DamageFrequency - How often to apply damage, in milliseconds. Default is 2000ms, or every two seconds.
+DamageMultiplier - Final tunable to alter the damage done by the script. set to 2 for double damage, 0.5 for half damage, etc. 1 is the default damage values in the chart above.
 
-If you don't want to use a post build event you need to manually remove it from the ``*.csproj`` file (`Target` attribute).
+<b>Requirements:</b>
+ScriptHookVDotNet
+
+<b>Installation:</b>
+Drop IceWater.dll and IceWater.ini into your GTA V scripts folder.
+
+
+<b>Changelog:</b>
+1.0.0 - Initial Release
+
+<b>Source Code:</b>
+https://github.com/Hydraxonn/IceWater
+
+<b>Credits:</b>
+NVE was used for the screenshots because pretty
+LorenVidican for (most of) the pause menu maps
